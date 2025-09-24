@@ -1,0 +1,82 @@
+:root {
+  --bg: #121212;
+  --card: #1e1e2f;
+  --text: #e5e7eb;
+  --muted: #aaaaaa;
+  --primary: #3b82f6;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --shadow: 0px 4px 12px rgba(0,0,0,0.3);
+
+  font-family: 'Poppins', 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--text);
+  background-color: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: start;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #2b2b3d;
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease, background 120ms ease;
+}
+button:hover { opacity: 0.9; }
+button:active { transform: translateY(1px); }
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Utility */
+.container { max-width: 1040px; margin: 0 auto; padding: 16px; }
+.grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.title { font-size: 18px; font-weight: 600; }
+.muted { font-size: 14px; color: var(--muted); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-danger { background: var(--danger); color: #fff; padding: 6px 12px; }
+.row { display: flex; gap: 8px; align-items: center; }
+.space-between { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.week-scroll { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+/* Force full-width single-column history list */
+.grid-full { grid-template-columns: 1fr !important; width: 100%; }
