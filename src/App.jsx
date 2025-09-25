@@ -90,32 +90,53 @@ function App() {
 
   if (!selectedHabit) {
     return (
-      <div style={{ width: '100%', margin: '0 auto', padding: 16, textAlign: 'left' }}>
-        <h1 style={{ margin: '8px 0 16px' }}>MiniHabit Tracker</h1>
-        <HabitCreator onAdd={addHabit} />
-        {TIME_SECTIONS.map(section => {
-          const items = habits.filter(h => h.timeOfDay === section)
-          if (!items.length) return null
-          return (
-            <div key={section} style={{ marginBottom: 16 }}>
-              <h3 style={{ margin: '12px 0 8px' }}>{section}</h3>
-              <HabitList
-                habits={items}
-                onQuickToggle={(id) => toggleHabitOnDate(id, todayKey)}
-                isTodayDone={(id) => Boolean(habits.find(h => h.id === id)?.entries?.[todayKey])}
-                onSelect={setSelectedHabitId}
-                onDelete={deleteHabit}
-              />
-            </div>
-          )
-        })}
+      <div className="min-h-screen">
+        {/* Navbar */}
+        <nav className="sticky top-0 z-50 w-full bg-[#1e1e2f] shadow-md">
+          <div className="w-4/5 mx-auto px-4 py-3 flex items-center justify-between">
+            <h1 className="text-xl font-semibold text-white">Mini Habit Tracker</h1>
+
+            {/* Add Habit button on right */}
+            <HabitCreator
+              onAdd={addHabit}
+              renderTrigger={({ open }) => (
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+                  onClick={open}
+                >
+                  + Add Habit
+                </button>
+              )}
+            />
+          </div>
+        </nav>
+
+        {/* Main content */}
+        <main className="w-4/5 mx-auto px-4 py-4">
+          {TIME_SECTIONS.map(section => {
+            const items = habits.filter(h => h.timeOfDay === section)
+            if (!items.length) return null
+            return (
+              <div key={section} className="mb-4">
+                <h3 className="mb-2 text-lg font-medium">{section}</h3>
+                <HabitList
+                  habits={items}
+                  onQuickToggle={(id) => toggleHabitOnDate(id, todayKey)}
+                  isTodayDone={(id) => Boolean(habits.find(h => h.id === id)?.entries?.[todayKey])}
+                  onSelect={setSelectedHabitId}
+                  onDelete={deleteHabit}
+                />
+              </div>
+            )
+          })}
+        </main>
       </div>
     )
   }
 
   return (
-    <div style={{ width: '90%', margin: '0 auto', padding: 16, textAlign: 'left', display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <h2 style={{ margin: '8px 0 12px', textAlign: 'center' }}>{selectedHabit.title}</h2>
+    <div className="w-4/5 mx-auto p-4 flex flex-col gap-3">
+      <h2 className="mt-2 mb-3 text-center text-xl font-semibold">{selectedHabit.title}</h2>
       <section style={{ marginTop: 16 }}>
         <h3 style={{ margin: '0 0 8px' }}>This Week (Sun - Sat)</h3>
         <WeekStrip
@@ -123,7 +144,7 @@ function App() {
           onSet={(date, value) => setHabitStatusOnDate(selectedHabit.id, date, value)}
         />
       </section>
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
+      <div className="flex justify-center mt-4">
         <button onClick={() => setSelectedHabitId(null)}>Back to Detail View</button>
       </div>
     </div>

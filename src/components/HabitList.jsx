@@ -24,7 +24,8 @@ export default function HabitList({ habits, onQuickToggle, isTodayDone, onSelect
     return <div style={{ color: '#888', padding: '8px 0' }}>No habits yet. Add your first one above.</div>
   }
   return (
-    <div className="grid grid-full">
+<div className="flex flex-col gap-5">
+
       {habits.map(habit => (
         <HabitCard
           key={habit.id}

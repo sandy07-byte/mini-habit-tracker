@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --bg: #121212;
   --card: #1e1e2f;
@@ -31,9 +33,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: start;
-  min-width: 320px;
   min-height: 100vh;
 }
 

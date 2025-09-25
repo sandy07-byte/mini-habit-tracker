@@ -1,6 +1,6 @@
 export default function HabitCard({ habit, isTodayDone, progressText, onQuickToggle, onSelect, onDelete }) {
   return (
-    <div className="card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+    <div className="card rounded-xl shadow-lg p-5" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <button
           onClick={onQuickToggle}
@@ -17,7 +17,7 @@ export default function HabitCard({ habit, isTodayDone, progressText, onQuickTog
           {isTodayDone ? '✅' : '❌'}
         </button>
         <div>
-          <div className="title">{habit.title} <span style={{ opacity: 0.7, fontWeight: 400 }}>· {habit.timeOfDay}</span></div>
+          <div className="title justify-content=center ">{habit.title} <span style={{ opacity: 0.7, fontWeight: 400 }}>· {habit.timeOfDay}</span></div>
           <div className="muted">{progressText}</div>
         </div>
       </div>
